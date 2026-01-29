@@ -5,20 +5,18 @@ const fetchData = async () => {
   const data = await res.json();
 
   console.log(data);
-  const tbodyElement = document.getElementById("users").querySelector("tbody");
-  const innerBodyTableString = data
-    .map((item) => {
-      return `<tr>
-        <td>${item.id}</td>
-        <td>${item.name}</td>
-        <td>${item.email}</td>
-    </tr>`;
-    })
-    .join("\n");
-  console.log(innerBodyTableString);
-
-  console.log(tbodyElement);
-  tbodyElement.innerHTML = innerBodyTableString;
+  const tbodyElement = document.querySelector("#users tbody");
+  if (data && data.length) {
+    data.forEach((user, index) => {
+      tbodyElement.innerHTML += `
+        <tr>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+        </tr>
+        `;
+    });
+  }
 };
 
 fetchData();
