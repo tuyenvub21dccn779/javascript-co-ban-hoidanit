@@ -9,7 +9,7 @@ const fetchData = async () => {
   console.log(data);
 
   if (data && data.length) {
-    data.forEach(function(user) {
+    data.forEach(function(user) { 
       const trElement = document.createElement("tr");
       trElement.innerHTML = `
         <td>${user.id}</td>
